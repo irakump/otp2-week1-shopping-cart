@@ -5,6 +5,6 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-RUN mvn package --enable-preview
+RUN mvn package
 
 CMD ["java", "-jar", "target/ShoppingCart.jar"]
