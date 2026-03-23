@@ -3,8 +3,8 @@ LABEL authors="irakump"
 
 WORKDIR /app
 COPY pom.xml .
-COPY . /src
+COPY src ./src
 
 RUN mvn package --enable-preview
 
-CMD ["java", "--enable-preview", "-jar", "target/ShoppingCart.jar"]
+CMD ["java", "-jar", "target/ShoppingCart.jar"]
