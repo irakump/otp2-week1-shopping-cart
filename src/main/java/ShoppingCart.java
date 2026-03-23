@@ -3,6 +3,16 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class ShoppingCart {
+    private static double sum = 0.0;
+
+    public static double getSum() {
+        return sum;
+    }
+
+    public static void setSum(double sum) {
+        ShoppingCart.sum = sum;
+    }
+
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
@@ -36,7 +46,6 @@ public class ShoppingCart {
         System.out.println(rb.getString("cart"));
 
         String item;
-        double sum = 0.0;
 
         while (true) {
 
@@ -60,12 +69,16 @@ public class ShoppingCart {
             System.out.println(rb.getString("enter_quantity"));
             double quantity = Double.parseDouble(input.nextLine());
 
-            sum += quantity * price;
+            ShoppingCart.calculateTotalPrice(price, quantity);
 
-            System.out.println(rb.getString("grand_total") + ": " + sum);
+            System.out.println(rb.getString("grand_total") + ": " + ShoppingCart.sum);
             System.out.println();
         }
 
         input.close();
+    }
+
+    public static void calculateTotalPrice(double price, double quantity) {
+        sum += quantity * price;
     }
 }
