@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin;${env.PATH}"
-        DOCKER_CONTEXT = "default"
+        DOCKER_HOST = "npipe:////./pipe/docker_engine"
         DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
         DOCKERHUB_REPO = 'irakump/otp2-week-1-shopping-cart'
         DOCKER_IMAGE_TAG = 'v1'
@@ -36,12 +36,6 @@ pipeline {
         stage('Publish Coverage Report') {
             steps {
                 jacoco()
-            }
-        }
-
-        stage('Set Docker Context') {
-            steps {
-                bat 'docker context use default'
             }
         }
 
