@@ -16,7 +16,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/irakump/otp2-week1-shopping-cart.git'
+                git branch: 'main', url: 'https://github.com/irakump/otp2-week1-shopping-cart.git'
             }
         }
 
